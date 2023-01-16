@@ -1,0 +1,271 @@
+
+#include <iostream>
+
+using namespace std;
+class AbstractSubject { 
+    protected:
+      string SubjectName;
+      string Duration;
+      string StartDate; 
+      string LastLecture;
+    public:
+      AbstractSubject (string SubjectName, string Duration, string StartDate, string LastLecture) {
+          this -> SubjectName = SubjectName;
+          this -> Duration = Duration;
+          this -> StartDate = StartDate;
+          this -> LastLecture = LastLecture;
+      } 
+      string getSubjectName(){
+          return SubjectName;
+      }
+      void setSubjectName(string SubjectName) {
+          this -> SubjectName = SubjectName;
+      }
+      string getDuration() {
+          return Duration;
+      }
+      void setDuration(string Duration) {
+          this -> Duration = Duration;
+      }
+      string getStartDate() {
+          return StartDate;
+      }
+      void setSartDate(string StartDate) {
+          this -> StartDate = StartDate;
+      }
+      string getLastLecture() {
+          return LastLecture;
+      }
+      void setLastLecture(string LastLecture) {
+          this -> LastLecture = LastLecture;
+      }
+};
+
+class SkillwillSubject: public AbstractSubject {
+    public:
+    SkillwillSubject(string SubjectName, string Duration, string StartDate, string LastLecture): AbstractSubject(SubjectName, Duration, StartDate, LastLecture){};
+      void getDescription() {
+          cout << "Name of subject: " << SubjectName << endl;
+          cout << "duration: " << Duration << endl;
+          cout << "Starting date: " << StartDate << endl;
+          cout << "Last lecture: " << LastLecture << endl;
+      }
+};
+class AbstractLecturer { 
+    protected:
+     
+      string FirstName;
+      string LastName;
+      string SubjectName;
+      string Chapter;
+      string Level;
+  
+    public:
+      
+      AbstractLecturer(string FirstName, string LastName, string SubjectName, string Chapter, string Level) {
+          this -> FirstName = FirstName;
+          this -> LastName = LastName;
+          this -> SubjectName = SubjectName;
+          this -> Chapter = Chapter;
+          this -> Level = Level;
+      }
+      string getFirstName(){
+          return FirstName;
+      }
+      void setFirstName(string FirstName){
+          this -> FirstName = FirstName;
+      }
+      string getLastName(){
+          return LastName;
+      }
+      void setLastName (string LastName) {
+          this -> LastName = LastName;
+      }
+      string getSubjectName(){
+          return SubjectName;
+      }
+      void getSubjectName(string SubjectName){
+          this -> SubjectName = SubjectName;
+      }
+      string getLevel(){
+          return Level;
+      }
+      void setLevel(string Level) {
+          this -> Level=Level;
+      }
+      string getChapter() {
+          return Chapter;
+      }
+      void setChapter(string Chapter) {
+          this -> Chapter=Chapter;
+      }
+    
+};
+
+class SkillwillLecturer: public AbstractLecturer {
+    public:
+
+      
+      SkillwillLecturer (string FirstName, string LastName, string SubjectName, string Chapter, string Level): AbstractLecturer(FirstName, LastName, SubjectName, Chapter, Level) {}
+      
+      
+      void teach (string SubjectName) {
+        cout << FirstName << " " << LastName << " is conducting " << SubjectName << " lecture" << endl;
+    }
+      void lecture(){
+        cout << "Lecturer is conducting a lecture" << endl;
+      }
+      string lecture(string SubjectName, string StartDate){
+          return FirstName + LastName;
+      };
+    void getDescription() {
+        cout << "First Name: " << FirstName << endl;
+        cout << "Last name: " << LastName << endl;
+        cout << "Subject name: " << SubjectName << endl;
+        cout << "Chapter: " << Chapter << endl;
+        cout << "Level: " << Level << endl;
+    }
+      
+};
+
+class AbstractStudent { 
+    protected:
+      string StudentFirstName;
+      string StudentLastName;
+      int Age;
+      string IsLearning;
+      string Section;
+      string Course;
+      int Score;
+     
+      
+    public:
+      
+      AbstractStudent(string StudentFirstName, string StudentLastName, int Age, string IsLearning, string Section, string Course, int Score) {
+          this -> StudentFirstName = StudentFirstName;
+          this -> StudentLastName = StudentLastName;
+          this -> Age = Age;
+          this -> IsLearning = IsLearning;
+          this -> Section = Section;
+          this -> Course = Course;
+          this -> Score = Score;
+      }
+      
+      string getStudentFirstName() {
+          return StudentFirstName;
+      }
+      void setStudentName(string StudentName){
+          this -> StudentFirstName = StudentFirstName;
+      }
+      string getStudentLastName() {
+          return StudentLastName;
+      }
+      void setStudentLastName(string setStudentLastName){
+          this -> StudentLastName = StudentLastName;
+      }
+      int getAge() {
+          return Age;
+      }
+      void setAge(int Age){
+          this -> Age = Age;
+      }
+      string getIsLearning() {
+          return IsLearning;
+      }
+      void setIsLearning(string IsLearning){
+          this -> IsLearning = IsLearning;
+      }
+      string getSection() {
+          return Section;
+      }
+      void setSection(string Section) {
+          this -> Section = Section;
+      }
+      string getCourse() {
+          return Course;
+      }
+      void setCourse(string Course) {
+          this -> Course = Course;
+      }
+      
+      int getScore() {
+          return Score;
+      }
+      void setScore(int Score) {
+          this -> Score = Score;
+      }
+      
+      void attendLesson() {
+          cout << "student is attending lecture" << endl;
+      }
+};
+
+
+class SkillwillStudent: public AbstractStudent {
+    public:
+      
+      
+      SkillwillStudent (string StudentFirstName, string StudentLastName, int Age, string IsLearning, string Section, string Course, int Score): AbstractStudent(StudentFirstName, StudentLastName, Age, IsLearning, Section, Course, Score) {
+         
+      }
+      
+      
+      void attendLesson() {
+          cout << Course << " student " << StudentFirstName << " " << StudentLastName << " is attending a lecture" << endl; 
+      };
+        
+     void getDescription() {
+        cout << "Fisrt name: " << StudentFirstName << endl;
+        cout << "Last name: " << StudentLastName << endl;
+        cout << "Age: " << Age << endl;
+        cout << "Is learning: " << IsLearning << endl;
+        cout << "Section: " << Section << endl;
+        cout << "Course: " << Course << endl;
+        cout << "Score: " << Score << endl;
+    }
+    void update(int Score ,int newScore){
+              int Total = 0;
+              Total = Score + newScore;
+              cout << Total << endl;
+              this -> Score = Total;
+          }
+    
+          int getScore(){
+              return Score;
+          }
+    
+};
+
+    class Kahoot {
+        public:
+        int scores(int x, int y);
+    };
+    int Kahoot :: scores(int x, int y) {
+        return x + y;
+    }
+
+
+
+int main()
+{
+   SkillwillSubject subject("OOP", "1 month", "10.11.2022", "Practical");
+   subject.getDescription();
+   SkillwillLecturer lecturer("alexander", "kutaladze", "OOP", "Back-end", "Senior");
+   cout << lecturer.lecture(subject.getSubjectName(), subject.getStartDate() ) << endl;
+   lecturer.getDescription();
+   SkillwillStudent student ("Nini", "Ninidze", 53, "OOP", "B section", "Back-end", 2280);
+   student.getDescription();
+   student.attendLesson();
+   student.update(student.getScore(), 2435);
+   Kahoot total;
+   cout << "the total score of student is: " << total.scores(2280,2435) << endl;
+   
+   lecturer.teach("OOP");
+   
+   
+ 
+   
+    return 0;
+}
+
+
